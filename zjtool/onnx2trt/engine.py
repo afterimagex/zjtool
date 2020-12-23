@@ -36,7 +36,7 @@ def build_engine(
             builder.create_network(explicit_batch) as network, \
             trt.OnnxParser(network, TRT_LOGGER) as parser:
 
-        builder.max_workspace_size = 1 << 31  #
+        builder.max_workspace_size = 1 << 31
         builder.max_batch_size = max_batch_size
         builder.strict_type_constraints = True
 

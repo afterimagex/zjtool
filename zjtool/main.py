@@ -22,10 +22,9 @@ def cli():
 @cli.command()
 @click.option('-f', '--file', type=str, required=True, help='upload files')
 @click.option('-e', '--no_encrypt', action='store_true', default=False, help='no encrypt')
-
 def fastdfs(**kwargs):
     '''Download and Upload file to FastDFS server.'''
-
+    pass
 
 
 @cli.command()

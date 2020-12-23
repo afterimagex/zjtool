@@ -15,6 +15,7 @@ import tempfile
 
 import pycuda.driver as cuda
 import tensorrt as trt
+import pycuda.autoinit
 
 
 class IInt8Calibrator2(trt.IInt8EntropyCalibrator2):

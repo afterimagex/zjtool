@@ -59,7 +59,7 @@ def find_packages():
 
 
 def find_package_data():
-    binarys = ['zjtool/cryption/encrypt', 'zjtool/cryption/decrypt']
+    binarys = ['cryption/encrypt', 'cryption/decrypt']
     return binarys
 
 
