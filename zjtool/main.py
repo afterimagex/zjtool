@@ -81,9 +81,57 @@ cli.add_command(fastdfs)
               is_flag=True,
               default=True)
 def onnx2trt(**kwargs):
-    '''Convert ONNX model to Tensorrt model.'''
+    '''Convert ONNX model to TensorRT model.'''
     from zjtool.onnx2trt.convert import main_convert
     main_convert(kwargs)
+
+
+@cli.command()
+@click.option('-i', '--onnx-file',
+              help='input onnx file',
+              type=str,
+              required=True)
+@click.option('-o', '--output-file',
+              help='output engine file',
+              type=str,
+              required=True)
+@click.option('-f', '--file-list',
+              help='file list',
+              type=str)
+@click.option('-q', '--quant-mode',
+              help='quant mode',
+              type=click.Choice(['int8', 'fp16', 'fp32']),
+              default='int8')
+@click.option('-d', '--shape-dynamic',
+              help='dynamic shape',
+              is_flag=True)
+@click.option('-r', '--resize-type',
+              help='resize type',
+              type=click.Choice(['CenterPadResize', 'Cv2Resize']),
+              default='CenterPadResize')
+@click.option('-b', '--border-value',
+              help='bgr border value',
+              nargs=3,
+              type=int,
+              default=(0, 0, 0))
+@click.option('-s', '--bchw-shape',
+              help='input of bchw shape',
+              nargs=4,
+              type=int,
+              default=(1, 3, 224, 224))
+@click.option('-m', '--mean-value',
+              help='mean and std value',
+              nargs=3,
+              type=float,
+              default=(0.5, 0.5, 0.5))
+@click.option('-v', '--std-value',
+              help='mean and std value',
+              nargs=3,
+              type=float,
+              default=(0.5, 0.5, 0.5))
+def onnx2vino(**kwargs):
+    '''Convert ONNX model to OpenVINO model.'''
+    pass
 
 
 def main():
