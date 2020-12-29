@@ -19,7 +19,7 @@ from urllib.request import urlopen
 import requests
 from rich.progress import Progress
 
-from zjtool.cryption import decrypt
+from zjtool.cryption import do_decrypt
 from zjtool.utils import console, XSTR
 from .config import CONFIG
 from .mgdb import file_info
@@ -51,7 +51,7 @@ def _download(url: str, dst: Path):
 def download_from_url(url: str, dst: str, dec: bool):
     dst = Path(dst)
     if dec:
-        with decrypt(dst, CONFIG['ed_secret']) as ef:
+        with do_decrypt(dst, CONFIG['ed_secret']) as ef:
             assert _download(url, ef)
     else:
         assert _download(url, dst)

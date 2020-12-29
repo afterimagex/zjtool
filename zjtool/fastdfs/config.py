@@ -13,6 +13,8 @@
 import json
 from pathlib import Path
 
+from zjtool.utils import console
+
 USER_PATH = Path('~/.zjtool').expanduser()
 USER_PATH.mkdir(exist_ok=True)
 
@@ -37,7 +39,7 @@ else:
 
 
 def show():
-    print(json.dumps(CONFIG, indent=4, ensure_ascii=False))
+    console.print(json.dumps(CONFIG, indent=4, ensure_ascii=False))
 
 
 def update(kv):

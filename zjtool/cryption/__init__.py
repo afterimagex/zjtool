@@ -22,7 +22,7 @@ DECRYPT = Path(__file__).absolute().parent / 'decrypt'
 
 
 @contextmanager
-def encrypt(src_path: Path, secret: str):
+def do_encrypt(src_path: Path, secret: str):
     with TemporaryDirectory() as dirname:
         tmpname = Path(dirname) / (str(src_path.name) + '.encrypt')
         call_shell([
@@ -35,7 +35,7 @@ def encrypt(src_path: Path, secret: str):
 
 
 @contextmanager
-def decrypt(src_path: Path, secret: str):
+def do_decrypt(src_path: Path, secret: str):
     with TemporaryDirectory() as dirname:
         tmpname = Path(dirname) / (str(src_path.name) + '.decrypt')
         yield tmpname
