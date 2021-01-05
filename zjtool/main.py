@@ -67,7 +67,7 @@ cli.add_command(fastdfs)
               help='mean and std value',
               nargs=3,
               type=float,
-              default=(0.5, 0.5, 0.5))
+              default=(0.25, 0.25, 0.25))
 @click.option('-c', '--calibrator-type',
               help='calibrator type',
               type=click.Choice(['IInt8Calibrator2']),

@@ -30,6 +30,9 @@ def fastdfs():
 @click.option('-t', '--tag', type=str, default=None, help='tag标识')
 @click.option('-e', '--encrypt', is_flag=True, help='加密上传')
 def upload(**kwargs):
+    '''
+    upload file to fastdfs server.
+    '''
     _upload(
         src_path=kwargs['file'],
         encrypt=kwargs['encrypt'],
@@ -40,6 +43,9 @@ def upload(**kwargs):
 
 @fastdfs.command()
 def show_config(**kwargs):
+    '''
+    show the global config
+    '''
     show()
 
 
@@ -53,6 +59,9 @@ def show_config(**kwargs):
 @click.option('-b', '--branch', type=str, default=None, help='指定业务分支')
 @click.option('-e', '--decrypt', is_flag=True, help='下载后解密')
 def download(**kwargs):
+    '''
+    download file using [md5/url/json]
+    '''
     if kwargs['json']:
         download_from_json(kwargs['json'], kwargs['branch'])
     if kwargs['md5']:
