@@ -66,6 +66,8 @@ setuptools.setup(
     name='zjtool',
     version='0.1.4',
     author='peichao.xu',
+    author_email="563853580@qq.com",
+    url="https://github.com/afterimagex/zjtool.git",
     packages=find_packages(),
     license='BSD 2-Clause',
     install_requires=[
