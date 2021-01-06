@@ -26,7 +26,6 @@
 from __future__ import absolute_import, division, print_function
 
 import os
-
 import setuptools
 
 try:
@@ -69,7 +68,17 @@ setuptools.setup(
     author='peichao.xu',
     packages=find_packages(),
     license='BSD 2-Clause',
-    install_requires=['rich', 'pymongo', 'click'],
+    install_requires=[
+        'rich',
+        'pymongo',
+        'click',
+        'requests',
+        'onnx==1.7',
+        'opencv-python==4.4.0.46',
+        'scikit-build==0.11.1',
+        'pillow==8.0.1',
+        'pytest==5.1.2',
+    ],
     package_data={'zjtool': find_package_data()},
     cmdclass={'bdist_wheel': bdist_wheel},
     entry_points={

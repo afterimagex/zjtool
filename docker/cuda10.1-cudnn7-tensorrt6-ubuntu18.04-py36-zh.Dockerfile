@@ -1,16 +1,15 @@
-# cd $repo_root && python setup.py sdist
 # mkdir temp && cd temp
 # cp ../zjtool/onnx-tensorrt7.0-tar.py36.Dockerfile .
-# cp ../dist/zjtool-*.tar.gz .
 # cp /path/to/downlaod/TensorRT-7.0.0.11.*.tar.gz .
-# git clone --recurse-submodules https://github.com/onnx/onnx-tensorrt.git -b 7.0
-# docker build -f onnx-tensorrt7.0-tar-py36.Dockerfile --tag=onnx-tensorrt:7.0.0.11 .
+# git clone --recurse-submodules https://github.com/onnx/onnx-tensorrt.git -b 6.0
+# docker build -f onnx-tensorrt7.0-tar-py36.Dockerfile --tag=onnx-tensorrt:6.0.1.5 .
 
 FROM nvcr.io/nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
-ARG TENSORRT_VERSION=7.0.0.11
+MAINTAINER afterimagex "563853580@qq.com"
+ARG TENSORRT_VERSION=6.0.1.5
 ARG PY3_VERSION=36
+ENV LANG C.UTF-8
 
-# 配置pip apt
 RUN mkdir /root/.pip && \
     echo '[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple' > /root/.pip/pip.conf && \
     echo '[easy_install]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple' > /root/.pydistutils.cfg && \
@@ -43,23 +42,23 @@ RUN cd /usr/local/bin &&\
     ln -s /usr/bin/python3 python &&\
     ln -s /usr/bin/pip3 pip
 
-RUN cd /tmp &&\
-    wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.sh &&\
-    chmod +x cmake-3.15.7-Linux-x86_64.sh &&\
-    ./cmake-3.15.7-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-license &&\
+RUN cd /tmp && \
+    wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.sh && \
+    chmod +x cmake-3.15.7-Linux-x86_64.sh && \
+    ./cmake-3.15.7-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-license && \
     rm ./cmake-3.15.7-Linux-x86_64.sh
 
-RUN pip install scikit-build==0.11.1 && \
-    pip install opencv-python==4.4.0.46 pillow==8.0.1 && \
-    pip install rich && \
-    pip install onnx==1.5 pytest==5.1.2
+RUN cd /tmp && \
+    git clone https://github.com/afterimagex/zjtool.git && \
+    cd zjtool && python setup.py sdist && \
+    pip install dist/zjtool*.tar.gz && \
+    rm -rf ./zjtool
 
 WORKDIR /opt
 COPY . .
 
 # Install TensorRT
-RUN pip install zjtool*.tar.gz && \
-    tar -xvf TensorRT-${TENSORRT_VERSION}.*.tar.gz && \
+RUN tar -xvf TensorRT-${TENSORRT_VERSION}.*.tar.gz && \
     cd TensorRT-${TENSORRT_VERSION}/ && \
     cp lib/lib* /usr/lib/x86_64-linux-gnu/ && \
     rm /usr/lib/x86_64-linux-gnu/libnv*.a && \
@@ -92,10 +91,7 @@ RUN rm -rf build/ && \
     python setup.py install && \
     rm -rf ./build/
 
-ENV LANG C.UTF-8
-
 WORKDIR /workspace
 
-RUN cp /opt/onnx-tensorrt/onnx_backend_test.py .
-
-RUN ["/bin/bash"]
+CMD ["--help"]
+ENTRYPOINT ["./zjtool"]
