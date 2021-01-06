@@ -12,8 +12,8 @@ docker pull afterimage/onnx-tensorrt:cuda10.0-cudnn7-tensorrt7.0.0.11-ubuntu18.0
 
 ```bash
 cd /tmp && mkdir build_docker && cd build_docker
-cp ${path to repo}/zjtool/docker/cuda10.0-cudnn7-tensorrt7-ubuntu18.04-py36-zh.Dockerfile .
-cp ${path to downlaod TensorRT-*.tar.gz}/TensorRT-7.0.0.11.*.tar.gz .
+cp ${path/to/repo}/zjtool/docker/cuda10.0-cudnn7-tensorrt7-ubuntu18.04-py36-zh.Dockerfile .
+cp ${path/to/downlaod TensorRT-*.tar.gz}/TensorRT-7.0.0.11.*.tar.gz .
 git clone --recurse-submodules https://github.com/onnx/onnx-tensorrt.git -b 7.0
 docker build -f cuda10.0-cudnn7-tensorrt7-ubuntu18.04-py36-zh.Dockerfile --tag=onnx-tensorrt:7.0.0.11 .
 ```
