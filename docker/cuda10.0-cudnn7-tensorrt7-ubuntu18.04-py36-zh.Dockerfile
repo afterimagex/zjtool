@@ -95,4 +95,4 @@ RUN rm -rf build/ && \
 WORKDIR /workspace
 
 CMD ["--help"]
-ENTRYPOINT ["py-onnx2trt"]
+ENTRYPOINT ["zjtool"]

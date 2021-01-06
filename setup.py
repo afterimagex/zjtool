@@ -81,7 +81,7 @@ setuptools.setup(
     cmdclass={'bdist_wheel': bdist_wheel},
     entry_points={
         'console_scripts': [
-            'py-onnx2trt = zjtool.main:main'
+            'zjtool = zjtool.main:main'
         ]
     },
     classifiers=[
