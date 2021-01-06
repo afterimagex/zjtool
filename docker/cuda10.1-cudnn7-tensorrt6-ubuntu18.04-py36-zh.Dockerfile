@@ -8,6 +8,7 @@ FROM nvcr.io/nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 MAINTAINER afterimagex "563853580@qq.com"
 ARG TENSORRT_VERSION=6.0.1.5
 ARG PY3_VERSION=36
+
 ENV LANG C.UTF-8
 
 RUN mkdir /root/.pip && \
@@ -48,13 +49,6 @@ RUN cd /tmp && \
     ./cmake-3.15.7-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-license && \
     rm ./cmake-3.15.7-Linux-x86_64.sh
 
-RUN cd /tmp && \
-    git clone https://github.com/afterimagex/zjtool.git && \
-    cd zjtool && python setup.py install && \
-    pip install scikit-build==0.11.1 && \
-    pip install opencv-python==4.4.0.46 onnx==1.7 pillow==8.0.1 && \
-    rm -rf ./zjtool
-
 WORKDIR /opt
 COPY . .
 
@@ -94,5 +88,6 @@ RUN rm -rf build/ && \
 
 WORKDIR /workspace
 
-CMD ["--help"]
-ENTRYPOINT ["zjtool"]
+RUN cp /opt/onnx-tensorrt/onnx_backend_test.py .
+
+RUN ["/bin/bash"]

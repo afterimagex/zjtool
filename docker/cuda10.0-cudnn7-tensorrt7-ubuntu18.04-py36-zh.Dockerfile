@@ -8,6 +8,7 @@ FROM nvcr.io/nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 MAINTAINER afterimagex "563853580@qq.com"
 ARG TENSORRT_VERSION=7.0.0.11
 ARG PY3_VERSION=36
+
 ENV LANG C.UTF-8
 
 RUN mkdir /root/.pip && \
@@ -94,5 +95,6 @@ RUN rm -rf build/ && \
 
 WORKDIR /workspace
 
-CMD ["--help"]
-ENTRYPOINT ["zjtool"]
+RUN cp /opt/onnx-tensorrt/onnx_backend_test.py .
+
+RUN ["/bin/bash"]
