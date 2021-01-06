@@ -77,7 +77,7 @@ setuptools.setup(
         'pytest',
     ],
     extras_require={
-        'interactive': ['onnx==1.7', 'opencv-python==4.4.0.46', 'pillow==8.0.1']
+        'req': ['onnx==1.7', 'opencv-python==4.4.0.46', 'pillow==8.0.1']
     },
     package_data={'zjtool': find_package_data()},
     cmdclass={'bdist_wheel': bdist_wheel},

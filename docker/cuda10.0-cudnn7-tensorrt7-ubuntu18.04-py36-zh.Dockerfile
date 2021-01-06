@@ -51,7 +51,7 @@ RUN cd /tmp && \
 RUN cd /tmp && \
     git clone https://github.com/afterimagex/zjtool.git && \
     cd zjtool && python setup.py sdist && \
-    pip install dist/zjtool*.tar.gz && \
+    pip install dist/zjtool*.tar.gz req && \
     rm -rf ./zjtool
 
 WORKDIR /opt
