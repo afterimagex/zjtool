@@ -75,10 +75,12 @@ setuptools.setup(
         'requests',
         'scikit-build==0.11.1',
         'onnx==1.7',
-        'opencv-python==4.4.0.46',
         'pillow==8.0.1',
         'pytest==5.1.2',
     ],
+    extras_require={
+        'interactive': ['opencv-python==4.4.0.46']
+    },
     package_data={'zjtool': find_package_data()},
     cmdclass={'bdist_wheel': bdist_wheel},
     entry_points={
