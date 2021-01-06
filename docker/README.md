@@ -23,9 +23,9 @@ docker build -f cuda10.0-cudnn7-tensorrt7-ubuntu18.04-py36-zh.Dockerfile --tag=o
 ## docker pull
 
 ```bash
-docker pull afterimage/onnx-tensorrt:zjtool-tensorrt6.0.1.5-ubuntu18.04-py36-zh
+docker pull afterimage/onnx-tensorrt:zjtool-0.1.4-tensorrt6.0.1.5-ubuntu18.04-py36-zh
 # or
-docker pull afterimage/onnx-tensorrt:zjtool-tensorrt7.0.0.11-ubuntu18.04-py36-zh
+docker pull afterimage/onnx-tensorrt:zjtool-0.1.4-tensorrt7.0.0.11-ubuntu18.04-py36-zh
 ```
 
 ## docker build
