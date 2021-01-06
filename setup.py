@@ -64,7 +64,7 @@ def find_package_data():
 
 setuptools.setup(
     name='zjtool',
-    version='0.1.3',
+    version='0.1.4',
     author='peichao.xu',
     packages=find_packages(),
     license='BSD 2-Clause',
@@ -83,7 +83,7 @@ setuptools.setup(
     cmdclass={'bdist_wheel': bdist_wheel},
     entry_points={
         'console_scripts': [
-            'zjtool = zjtool.main:main'
+            'py-onnx2trt = zjtool.main:main'
         ]
     },
     classifiers=[
