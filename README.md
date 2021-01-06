@@ -22,17 +22,11 @@ docker build -f onnx-tensorrt7.0-tar-py36.Dockerfile --tag onnx-tensorrt:7.0.0.1
 docker run --gpus all -it -v /path/to/your/model:/data onnx-tensorrt:7.0.0.11
 
 --gpus all                         --> 使用所有显卡\
---itd                              --> i:交互式操作    t:伪输入终端  通常一起使用    it:容器与终端通信输入输出\
+--it                               --> i:交互式操作    t:伪输入终端  通常一起使用    it:容器与终端通信输入输出\
 --v                                --> 操作在容器创建的过程时候可以将宿主机的目录挂载到容器内\
 /path/to/your/model                --> 宿主机文件目录
 /data                              --> docker内挂载目录
 ```
-
-### 3、查看本地主机上的 docker 镜像(进入docker)
-
-    -- docker images\
-    -- docker ps -a
-
 # **转换模型**
 
 ### 1.将转换好的ONNX文件, 进行TensorRT转换：zjtool ，指定必要参数

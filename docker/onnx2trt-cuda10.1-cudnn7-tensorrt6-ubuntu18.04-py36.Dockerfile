@@ -14,11 +14,10 @@ ARG PY3_VERSION=36
 RUN mkdir /root/.pip && \
     echo '[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple' > /root/.pip/pip.conf && \
     echo '[easy_install]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple' > /root/.pydistutils.cfg && \
-    dist=$(. /etc/os-releases;echo $VERSION_CODENAME) && \
-    echo 'deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $dist main restricted universe multiverse\n \
-          deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $dist-updates main restricted universe multiverse\n \
-          deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $dist-backports main restricted universe multiverse\n \
-          deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $dist-security main restricted universe multiverse\n' > /etc/apt/sources.list
+    echo 'deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse\n \
+          deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n \
+          deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n \
+          deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n' > /etc/apt/sources.list
 
 # Install package dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
