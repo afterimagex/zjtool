@@ -50,8 +50,9 @@ RUN cd /tmp && \
 
 RUN cd /tmp && \
     git clone https://github.com/afterimagex/zjtool.git && \
-    cd zjtool && python setup.py sdist && \
-    pip install dist/zjtool*.tar.gz req && \
+    cd zjtool && python setup.py install && \
+    pip install scikit-build==0.11.1 && \
+    pip install opencv-python==4.4.0.46 onnx==1.7 pillow==8.0.1 && \
     rm -rf ./zjtool
 
 WORKDIR /opt

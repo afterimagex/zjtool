@@ -75,12 +75,8 @@ setuptools.setup(
         'pymongo',
         'click',
         'requests',
-        'scikit-build',
         'pytest',
     ],
-    extras_require={
-        'req': ['onnx==1.7', 'opencv-python==4.4.0.46', 'pillow==8.0.1']
-    },
     package_data={'zjtool': find_package_data()},
     cmdclass={'bdist_wheel': bdist_wheel},
     entry_points={
