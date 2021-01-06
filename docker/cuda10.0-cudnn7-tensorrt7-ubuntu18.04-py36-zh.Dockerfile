@@ -94,4 +94,4 @@ RUN rm -rf build/ && \
 WORKDIR /workspace
 
 CMD ["--help"]
-ENTRYPOINT ["./zjtool"]
+ENTRYPOINT ["zjtool"]
